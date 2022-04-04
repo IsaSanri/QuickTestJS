@@ -14,17 +14,30 @@ async function getData() {
 async function get() {
   await getData();
   console.log(docs);
+  
 }
 
 async function firstExercise(){
   await getData();
-  cons
-  ole.log(docs.filter((item) => item.article_type!="Research Article"));
+  console.log(docs.filter((item) => item.article_type!="Research Article"));
 }
+//First exercise extra proint
+async function filterDataByArticleType(type) {
+  await getData();
+  console.log(docs.filter((item) => item.article_type!=type));
+}
+
+
 async function secondExercise(){
   await getData();
   console.log(docs.filter((item) => item.score>"6.0"));
 }
+//Second exercise extra proint
+async function printAuthorByScore(score) {
+  await getData();
+  console.log(docs.filter((item) => item.score> score));
+}
+
 
 async function thirdExercise(){
   await getData();
@@ -44,6 +57,14 @@ async function fifthExcercise(){
   await getData();
   console.log(docs.map((item)=>item.journal));
 }
+//Fifth exercise extra proint
+async function noRepeatPrintJournals() {
+  await getData();
+  let journals = docs.map((item) => item.journal);
+  let onlyJournals = [...new Set(journals)];
+  console.log(onlyJournals);
+}
+
 
 async function sixthExercise(){
   await getData();
@@ -52,6 +73,15 @@ async function sixthExercise(){
   });
   console.log(docs); 
 }
+//Sixth exercise extra proint
+async function removeSelectedProperty(property) {
+  await getData();
+  let newDocs = docs.map(({ [property]: removedProperty, ...rest }) => {
+    return rest;
+  });
+  console.log(newDocs);
+}
+
 
 async function seventhExercise(){
   await getData();
@@ -129,15 +159,22 @@ async function ninthExercise(){
 
 
 get();{}
+
 firstExercise();{}
+filterDataByArticleType();{}
+
 secondExercise();{}
+printAuthorByScore();{}
+
 thirdExercise();{}
 fourthdExercise();{}
+
 fifthExcercise();{}
+noRepeatPrintJournals();{}
+
 sixthExercise();{}
+removeSelectedProperty();{}
+
 seventhExercise();{}
 eighthExercise();{}
 ninthExercise();{}
-
-
-
